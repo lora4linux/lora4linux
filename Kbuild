@@ -1,0 +1,3 @@
+obj-m := sx130x.o
+
+sx130x-y := drivers/spi/sx130x.o
