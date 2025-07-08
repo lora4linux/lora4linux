@@ -1,0 +1,35 @@
+/*
+ * waveshare-sx1303-overlay.dts
+ *
+ * SX130x LoRaWAN Gateway Module/HAT.
+ */
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2711";
+
+	fragment@0 {
+		target = <&spidev0>;
+		__overlay__ {
+			status = "disabled";
+		};
+	};
+
+	fragment@3 {
+		target = <&spi0>;
+		__overlay__ {
+			/* needed to avoid dtc warning */
+			#address-cells = <1>;
+			#size-cells = <0>;
+			status = "okay";
+
+			sx1303: sx1303@0 {
+				compatible = "semtech,sx1303";
+				reg = <0>;
+				status = "okay";
+			};
+		};
+	};
+};
