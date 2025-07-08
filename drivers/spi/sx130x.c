@@ -1,4 +1,11 @@
 #include <linux/module.h>
+#include <linux/of.h>
+
+static const struct of_device_id sx130x_dt_ids[] = {
+	{ .compatible = "semtech,sx1303" },
+	{ },
+};
+MODULE_DEVICE_TABLE(of, sx130x_dt_ids);
 
 static int __init sx130x_init(void)
 {
